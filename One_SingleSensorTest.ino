@@ -21,13 +21,13 @@ DallasTemperature sensors(&oneWire);
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
    
 void setup(){ 
-    lcd.begin(20,4);                       // Initialize the 20x4 lcd sheild
+    lcd.begin(20,4);                       // Initialize the 20x4 LCD shield
     sensors.begin();                        // Begin the DS18B20 initialization
 }
 
 void loop(){ 
-int Celsius=0, Fahrenheit=0;     //Variables to store temperature readings from DS18B20 temperature sensor
-  sensors.requestTemperatures(); //Call all sensors on one wire to start calculating the temperature readings
+int Celsius=0, Fahrenheit=0;     // Variables to store temperature readings from DS18B20 temperature sensor
+  sensors.requestTemperatures(); // Call all sensors on one wire to start calculating the temperature readings
 
   Celsius=sensors.getTempCByIndex(0);   //Get temperature reading from sensor 0 in celsius scale
   Fahrenheit=sensors.getTempFByIndex(0);//Get temperature reading from sensor 0 in fahrenheit scale
