@@ -19,6 +19,8 @@ In this case, you would build the circuit in order of these steps:
 
 A separate folder is provided for testing and debugging steps 1 and 2. Steps 3 and 4 use the final working script and circuit diagram.
 
+A third folder called "Housing CAD" contains the CAD files created in Solidworks to build the housing of the Arduino system using 1/8-inch laser cut acrylic. The Solidworks files is included for modification, and the PDF file is exported from the Solidworks drawing to be used with the laser cutter.
+
 Finally, a folder for a Python GUI program is included. This program takes the .txt file from the SD card as input, and performs a simple heat transfer analysis on the temperature data to compute heat gain, max temperature, time to reach the max temperature, etc. It then saves the analysis results to an Excel file called "solarData.xlsx".
 
 After each experiment run with the Arduino, I recommend running the Python program on the text file to easily analyze and record valuable heat transfer data from each experiment.
