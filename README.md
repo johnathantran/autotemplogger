@@ -11,7 +11,7 @@ The final working script is: "autoTempLogger.ino". Upload this script to your Ar
 
 When building the final circuit, it is possible to just build the entire circuit right away by following the Full Circuit Diagram provided:
 
-![Full Wiring Diagram](/https://github.com/johnathantran/autotemplogger/blob/master/Full%20Circuit%20Diagram.png)
+![Full Wiring Diagram](https://github.com/johnathantran/autotemplogger/blob/master/Full%20Circuit%20Diagram.png)
 
 However, it is best practice to incrementally build the circuit and test if different parts of the circuit work along the way. Therefore I included a few other circuit diagrams and test scripts uploaded in this repo. These are meant for testing purposes, to be used as a reference as the user is building and debugging their circuit from scratch.
 
