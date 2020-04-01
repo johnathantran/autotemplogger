@@ -9,7 +9,10 @@ The full Arduino circuit diagram is the "Full Circuit Diagram.png" file. Use thi
 
 The final working script is: "autoTempLogger.ino". Upload this script to your Arduino.
 
-When building the final circuit, it is possible to just build the entire circuit right away by following the Full Circuit Diagram provided.  However, it is best practice to incrementally build the circuit and test if different parts of the circuit work along the way. Therefore I included a few other circuit diagrams and test scripts uploaded in this repo. These are meant for testing purposes, to be used as a reference as the user is building and debugging their circuit from scratch.
+When building the final circuit, it is possible to just build the entire circuit right away by following the Full Circuit Diagram provided:
+![Full Wiring Diagram](/Full Circuit Diagram.png)
+
+However, it is best practice to incrementally build the circuit and test if different parts of the circuit work along the way. Therefore I included a few other circuit diagrams and test scripts uploaded in this repo. These are meant for testing purposes, to be used as a reference as the user is building and debugging their circuit from scratch.
 
 In this case, you would build the circuit in order of these steps:
 1. Connect LCD Screen
@@ -20,6 +23,7 @@ In this case, you would build the circuit in order of these steps:
 A separate folder is provided for testing and debugging steps 1 and 2. Steps 3 and 4 use the final working script and circuit diagram.
 
 A third folder called "Housing CAD" contains the CAD files created in Solidworks to build the housing of the Arduino system using 1/8-inch laser cut acrylic. The Solidworks files is included for modification, and the PDF file is exported from the Solidworks drawing to be used with the laser cutter.
+
 
 Finally, a folder for a Python GUI program is included. This program takes the .txt file from the SD card as input, and performs a simple heat transfer analysis on the temperature data to compute heat gain, max temperature, time to reach the max temperature, etc. It then saves the analysis results to an Excel file called "solarData.xlsx".
 
