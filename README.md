@@ -2,6 +2,7 @@
 Arduino program to log and timestamp multiple temperatures from DS18B20 sensors to a text file on an SD card. Application for solar collector heat transfer monitoring, although you can use it for any application where you want to automatically record multiple temperatures of different environments.
 
 Reference for Multi-Temperature logging: https://arduinoinfo.mywikis.net/wiki/Brick-Temperature-DS18B20#Multiple_DS18B20_Example
+
 Reference for SD card/temp data integration: https://simple-circuit.com/sd-card-arduino-temperature-data-logger/
 
 The full Arduino circuit diagram is the "Full Circuit Diagram.png" file. Use this to build the circuit.
