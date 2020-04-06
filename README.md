@@ -25,7 +25,11 @@ A separate folder is provided for testing and debugging steps 1 and 2. Steps 3 a
 
 A third folder called "Housing CAD" contains the CAD files created in Solidworks to build the housing of the Arduino system using 1/8-inch laser cut acrylic. The Solidworks files is included for modification, and the PDF file is exported from the Solidworks drawing to be used with the laser cutter.
 
+Finally, a folder for a Python GUI program called "Temperature Analyzer" is included. This program takes the .txt file from the SD card as input, and performs a simple heat transfer analysis on the temperature data to compute heat gain, max temperature, time to reach the max temperature, etc. It then saves the analysis results to a master Excel file called "solarData.xlsx".
 
-Finally, a folder for a Python GUI program is included. This program takes the .txt file from the SD card as input, and performs a simple heat transfer analysis on the temperature data to compute heat gain, max temperature, time to reach the max temperature, etc. It then saves the analysis results to an Excel file called "solarData.xlsx".
+After each experiment run with the Arduino, I recommend doing the following:
 
-After each experiment run with the Arduino, I recommend running the Python program on the text file to easily analyze and record valuable heat transfer data from each experiment.
+1. Save your text file on the SD card using the test date as the file name with the format "MM-DD-YYY.txt". This is because the Python program takes the file name as the testing date and records it in the Excel sheet.
+2. Run this Python program using the text file as input to easily analyze and record valuable heat transfer data from each experiment. Click "Analyze Data" to perform the heat transfer analysis.
+3. Before clicking "Update Master Data", make sure the Excel file "solarData.xlsx" is in the SAME location as the Temperature Analyzer (otherwise it will crash!).
+4. Click "Update Master Data" once this is confirmed to update your master Excel file with the calculations.
