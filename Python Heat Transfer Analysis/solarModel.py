@@ -1,4 +1,4 @@
-# Team Biodigestables
+# Team Biodigester
 # import modules
 import datetime
 import os
