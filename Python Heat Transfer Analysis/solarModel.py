@@ -35,7 +35,12 @@ class tempDataClass:
         
         # DEPENDENT VARIABLES
         for i,val in enumerate(self.times):
-
+            
+            # time reformatting if wrong format
+            val = val.replace('AM','').strip()
+            val = val.replace('PM','').strip()
+            
+            print(val)
             # convert time data to datetime
             x = datetime.datetime.strptime(str(val), '%H:%M:%S')
             self.times[i] = x.time()
@@ -59,7 +64,7 @@ class tempDataClass:
         if time_at_30 != 'N/A':
             time_at_30 = datetime.datetime.combine(datetime.date.today(), time_at_30)
             time_to_30 = time_at_30 - start_time
-            time_to_30 = [round(time_to_30.total_seconds() / 3600,3)]
+            time_to_30 = round(time_to_30.total_seconds() / 3600,3)
         else:
             time_to_30 = 'N/A'
 
@@ -72,7 +77,7 @@ class tempDataClass:
 
         # MAX TIME CALCS - get time it takes to get to max temp
         max_time = datetime.datetime.combine(datetime.date.today(), self.times[maxIdx])
-        max_time = [round((max_time - start_time).total_seconds() / 3600,3)]
+        max_time = round((max_time - start_time).total_seconds() / 3600,3)
 
         # find heat gain required to raise temperature to max temp
         cp = 4.184 # [kJ/kg*K] heat capacity of water
@@ -164,7 +169,7 @@ def write(inputs,obj):
 
     #file_name = Path(file_name).stem
     # reads the column headers from the Excel sheet
-    df = pd.read_excel(output_file,sheet_name='Sheet1')
+    df = pd.read_excel(output_file,sheet_name='Analysis_Results')
 
     # These are the input headers in the data entry file for reference
     headers = ['Testing Date', 'Weather Conditions', 'Avg Flow Rate [kg/s]', 'Wind Speed [m/s]', 'Start Time', 'Test Duration [hrs]', 'Other Tested Variables', 'Max Temp Diff [C]', 'Max Temp [C]', 'Time to Reach 30C [hrs]', 'Time to Reach Max Temp [hrs]', 'Heat Gain to Reach Max Temp [kW]']
@@ -198,22 +203,21 @@ def write(inputs,obj):
     
     # read existing file
     reader = pd.read_excel(output_file)
-    df.to_excel(writer, sheet_name='Sheet1',index=False,header=False,startrow=len(reader)+1)
+    df.to_excel(writer, sheet_name='Analysis_Results',index=False,header=False,startrow=len(reader)+1)
     writer.close()
     writer.save()
 
     # WRITING TO SECOND SHEET
-    df = pd.read_excel(output_file,sheet_name='Sheet2')
-    #testData = {'Date':self.dates,'Time': self.times, 'Temp1 [C]': self.temps[0], 'Temp2 [C]': fileData[2], 'Temp_a[C]': fileData[3]}
+    df = pd.read_excel(output_file,sheet_name='Raw_Data')
     testData = obj.kwargs
 
-    df = df.append(testData, ignore_index=True,sort=False)
-    df = pd.DataFrame(testData)
+    df = df.append(obj.kwargs, ignore_index=True,sort=False)
+    df = pd.DataFrame(obj.kwargs)
     writer = pd.ExcelWriter(output_file, engine='openpyxl')
     writer.book = load_workbook(output_file)
     writer.sheets = dict((ws.title, ws) for ws in writer.book.worksheets)
-    reader = pd.read_excel(output_file,sheet_name='Sheet2')
-    df.to_excel(writer, sheet_name='Sheet2',index=False,header=False,startrow=len(reader)+1)
+    reader = pd.read_excel(output_file,sheet_name='Raw_Data')
+    df.to_excel(writer, sheet_name='Raw_Data',index=False,header=False,startrow=len(reader)+1)
     writer.close()
     writer.save()
 
@@ -227,7 +231,7 @@ def main():
     # creates the user interface
     def_font = 'Verdana 10' # default font
     
-    output_file = "solarDataTest.xlsx" # output analysis results to this Excel file
+    output_file = "solarData.xlsx" # output analysis results to this Excel file
     
     # utility description
     introMain = "Select the input temperature data file from your computer. \nFill in all the required independent variable fields and click 'Analyze Data'. \n* = required field"
@@ -294,7 +298,7 @@ def main():
                 
                     window.Element('update').Update("Your temperature data from has been successfully analyzed.")
                     
-                except ValueError: window.Element('update').Update("Bro that's not even a number.")
+                except ValueError: window.Element('update').Update("There is a ValueError either with your time formatting or your flow rate.")
                 except IndexError: window.Element('update').Update("There was an error analyzing your file. Please check the format of your input text file.")
                
 
